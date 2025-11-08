@@ -2,7 +2,8 @@ import os
 import requests
 
 cookie = os.environ.get("JD_COOKIE")
-token = os.environ.get("PUSHPLUS_TOKEN")
+token = os.environ.get('PUSHPLUS_TOKEN')
+
 title = 'JDSignIn'
 content = 'test'
 
@@ -24,5 +25,14 @@ headers = {"Connection": 'keep-alive',
 
 response = requests.post(url=url, headers=headers)
 content = response.text
+print("token =", token)
+print("title =", title)
+print("content =", content)
+if "PUSHPLUS_TOKEN" in os.environ: 
+        print('添加PUSHPLUS_TOKEN变量') 
+else: 
+        # 标准日志输出 
+        print('❌未添加PUSHPLUS_TOKEN变量') 
+        sys.exit(0) 
 pushplusUrl = 'http://www.pushplus.plus/send?token='+token+'&title='+title+'&content='+content
-requests.get(url)
+requests.get(pushplusUrl)
