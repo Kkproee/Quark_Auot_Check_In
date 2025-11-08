@@ -4,6 +4,8 @@ import sys
 import requests 
 
 cookie_list = os.getenv("COOKIE_QUARK").split('\n|&&')
+token = os.environ.get("PUSHPLUS_TOKEN")
+title = "Quark签到结果"
 
 # 替代 notify 功能
 def send(title, message):
@@ -179,7 +181,11 @@ def main():
         send('夸克自动签到', msg)
     except Exception as err:
         print('%s\n❌ 错误，请查看运行日志！' % err)
-
+        
+    requests.get(
+        "http://www.pushplus.plus/send",
+        params={"token": token, "title": title, "content": msg}
+    )
     return msg[:-1]
 
 
