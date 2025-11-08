@@ -32,3 +32,4 @@ jobs:
         python jd.py
       env:
         JD_COOKIE: ${{ secrets.JD_COOKIE }}
+        PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
