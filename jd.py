@@ -2,7 +2,7 @@ import os
 import requests
 
 cookie = os.environ.get("JD_COOKIE")
-token = os.environ. get("PUSHPLUS_TOKEN")
+token = os.environ.get("PUSHPLUS_TOKEN")
 title = 'JDSignIn'
 content = 'test'
 
