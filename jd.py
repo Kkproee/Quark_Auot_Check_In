@@ -2,6 +2,9 @@ import os
 import requests
 
 cookie = os.environ.get("JD_COOKIE")
+token = os.environ. get("PUSHPLUS_TOKEN")
+title = 'JDSignIn'
+content = 'test'
 
 url = ("https://api.m.jd.com/client.action?functionId=signBeanAct&body=%7B%22fp%22%3A%22-1%22%2C%22shshshfp%22%3A%22-1"
        "%22%2C%22shshshfpa%22%3A%22-1%22%2C%22referUrl%22%3A%22-1%22%2C%22userAgent%22%3A%22-1%22%2C%22jda%22%3A%22-1"
@@ -20,4 +23,6 @@ headers = {"Connection": 'keep-alive',
            }
 
 response = requests.post(url=url, headers=headers)
-print(response.text)
+content = response.text
+pushplusUrl = 'http://www.pushplus.plus/send?token='+token+'&title='+title+'&content='+content
+requests.get(url)
